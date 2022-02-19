@@ -5,14 +5,18 @@ import Layout from "./Layout";
 import Home from "./Home";
 
 function App() {
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("https://food2fork.ca/api/recipe/")
+    fetch(
+      `https://api.spoonacular.com/recipes/random?number=10&apiKey=${API_KEY}`
+    )
       .then((res) => res.json())
-      .then((data) => setRecipes(data.results));
-    console.log(recipes);
+      .then((data) => setRecipes(data.recipes));
   }, []);
+  console.log(recipes);
 
   return (
     <BrowserRouter>
