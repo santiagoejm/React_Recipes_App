@@ -4,9 +4,9 @@ import "./App.css";
 import Layout from "./Layout";
 import Home from "./Home";
 
-function App() {
-  const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
+function App() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home recipes={recipes} />} />
         </Routes>
       </Layout>
     </BrowserRouter>
