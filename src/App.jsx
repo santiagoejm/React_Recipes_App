@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./Layout";
 import Home from "./Home";
+import Detail from "./Detail";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -23,6 +24,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home recipes={recipes} />} />
+          <Route path="/details/:id" element={<Detail />} />
         </Routes>
       </Layout>
     </BrowserRouter>

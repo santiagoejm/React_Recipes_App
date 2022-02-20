@@ -31,10 +31,15 @@ body {
 .home {
   padding: 1rem;
   display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(3, 20vw);
 }
 
 .recipe-card {
+  margin-bottom: 1rem;
+  border: 1px solid red;
 }
 
 .image {
+  width: 100%;
 }
