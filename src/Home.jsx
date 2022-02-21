@@ -1,10 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = ({ recipes }) => {
-  const showDetails = () => {
-    console.log("clicked");
-  };
-
   return (
     <div className="home">
       {recipes.map((recipe) => {
@@ -19,7 +16,9 @@ const Home = ({ recipes }) => {
             <h4>{`Vegan: ${recipe.vegan}`}</h4>
             <h4>{`Vegetarian: ${recipe.vegetarian}`}</h4>
             <h4>{`Servings: ${recipe.servings}`}</h4>
-            <button onClick={showDetails}>More Details</button>
+            <button>
+              <Link to={`/details/${recipe.id}`}>More Details</Link>
+            </button>
           </div>
         );
       })}
