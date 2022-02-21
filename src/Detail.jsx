@@ -5,6 +5,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Detail = () => {
   const [recipe, setRecipe] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
   const params = useParams();
 
   useEffect(() => {
@@ -12,12 +13,11 @@ const Detail = () => {
       `https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=false&apiKey=${API_KEY}`
     )
       .then((res) => res.json())
-      .then((data) => setRecipe(data));
+      .then((data) => setRecipe(data))
+      .then(setIngredients(recipe.extendedIngridients));
   }, []);
-  // console.log(recipe);
-
-  let ingredients = recipe.extendedIngredients;
-  // console.log(ingredients);
+  console.log(recipe);
+  console.log(ingredients);
 
   return (
     <div className="recipe-info">
@@ -32,9 +32,6 @@ const Detail = () => {
         <h4>{`Vegetarian: ${recipe.vegetarian}`}</h4>
         <h4>{`Servings: ${recipe.servings}`}</h4>
         <h4>Ingredients:</h4>
-        {/* {ingredients.map((item) => {
-          return <li key={item.id}>{item.original}</li>;
-        })} */}
         <p>{`Instructions: ${recipe.instructions}`}</p>
       </div>
     </div>
