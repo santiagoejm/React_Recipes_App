@@ -14,7 +14,10 @@ const Detail = () => {
       .then((res) => res.json())
       .then((data) => setRecipe(data));
   }, []);
-  console.log(recipe);
+  // console.log(recipe);
+
+  let ingredients = recipe.extendedIngredients;
+  // console.log(ingredients);
 
   return (
     <div className="recipe-info">
@@ -29,7 +32,9 @@ const Detail = () => {
         <h4>{`Vegetarian: ${recipe.vegetarian}`}</h4>
         <h4>{`Servings: ${recipe.servings}`}</h4>
         <h4>Ingredients:</h4>
-
+        {/* {ingredients.map((item) => {
+          return <li key={item.id}>{item.original}</li>;
+        })} */}
         <p>{`Instructions: ${recipe.instructions}`}</p>
       </div>
     </div>
