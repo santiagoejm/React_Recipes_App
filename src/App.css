@@ -43,3 +43,7 @@ body {
 .image {
   width: 100%;
 }
+
+.close-toggle {
+  display: none;
+}
