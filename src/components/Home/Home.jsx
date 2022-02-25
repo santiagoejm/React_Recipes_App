@@ -1,12 +1,11 @@
 import React, { useState, useCallback, useContext } from "react";
 import "./home.scss";
-
 import { myContext } from "../context/context";
 
 const Home = () => {
   const [searchMeal, setSearchMeal] = useState("");
 
-  const { fetchHome } = useContext(myContext);
+  const { fetchHome, meals } = useContext(myContext);
 
   const fetchMealsHandler = useCallback(() => {
     fetchHome(searchMeal);
@@ -24,7 +23,18 @@ const Home = () => {
         <button onClick={fetchMealsHandler}>Search</button>
       </div>
 
-      <div className="home-meals"></div>
+      <div className="home-meals-grid">
+        {meals ? (
+          meals.map((meal) => {
+            <div className="home-meals" key={meal.idMeal}>
+              <img src={meal.strMealThumb} alt="#" />
+              <h4>{meal.strMeal}</h4>
+            </div>;
+          })
+        ) : (
+          <h2>Please try another search! Not matches found...</h2>
+        )}
+      </div>
     </div>
   );
 };
