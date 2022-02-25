@@ -5,13 +5,13 @@
 }
 
 body {
-  background-color: #777;
+  background-color: #ddd;
   display: flex;
   justify-content: center;
 }
 
 .container {
-  width: 65vw;
+  width: 70vw;
   min-height: 100vh;
   background-color: beige;
 }
