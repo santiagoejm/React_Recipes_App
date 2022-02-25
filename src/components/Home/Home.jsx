@@ -23,13 +23,15 @@ const Home = () => {
         <button onClick={fetchMealsHandler}>Search</button>
       </div>
 
-      <div className="home-meals-grid">
+      <div className="home-grid">
         {meals ? (
           meals.map((meal) => {
-            <div className="home-meals" key={meal.idMeal}>
-              <img src={meal.strMealThumb} alt="#" />
-              <h4>{meal.strMeal}</h4>
-            </div>;
+            return (
+              <div className="home-meal" key={meal.idMeal}>
+                <img src={meal.strMealThumb} alt="#" />
+                <h4>{meal.strMeal}</h4>
+              </div>
+            );
           })
         ) : (
           <h2>Please try another search! Not matches found...</h2>
