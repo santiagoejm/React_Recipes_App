@@ -17,8 +17,35 @@ export const AppContext = ({ children }) => {
       });
   }, []);
 
+  const fetchCategories = useCallback(() => {
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+      .then((res) => {
+        console.log(res.data.categories);
+        setCategories(res.data.categories);
+      });
+  }, []);
+
+  const fetchRandom = useCallback(() => {
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/random.php`)
+      .then((res) => {
+        console.log(res.data.meals);
+        setRandom(res.data.meals);
+      });
+  }, []);
+
   return (
-    <myContext.Provider value={{ fetchHome, meals }}>
+    <myContext.Provider
+      value={{
+        fetchHome,
+        meals,
+        fetchCategories,
+        categories,
+        fetchRandom,
+        random,
+      }}
+    >
       {children}
     </myContext.Provider>
   );
